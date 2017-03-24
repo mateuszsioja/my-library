@@ -11,7 +11,7 @@ public interface UserService {
 
     UserDTO findById(Long id);
 
-    UserDTO addBook(User user);
+    UserDTO addUser(User user);
 
     UserDTO editUser(User user, Long id);
 

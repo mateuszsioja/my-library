@@ -1,6 +1,8 @@
 package com.msioja.core.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Book {
@@ -9,12 +11,20 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookId;
 
+    @NotNull
+    @Size(min = 2, max = 25)
     private String serialNumber;
 
+    @NotNull
+    @Size(min = 2, max = 25)
     private String author;
 
+    @NotNull
+    @Size(min = 2, max = 25)
     private String title;
 
+    @NotNull
+    @Size(min = 2, max = 25)
     private String category;
 
     @ManyToOne(fetch = FetchType.LAZY)

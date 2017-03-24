@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
@@ -22,9 +21,14 @@ public class BookController {
     @Autowired
     private BookMapper bookMapper;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "all", method = RequestMethod.GET)
     public ResponseEntity<List<BookDTO>> getAllBooks() {
         return new ResponseEntity<>(bookService.findAll(), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<BookDTO>> getAllBooksForLoggedInUser() {
+        return new ResponseEntity<>(bookService.findBooksForLoggedInUser(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)

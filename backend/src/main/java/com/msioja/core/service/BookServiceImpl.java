@@ -1,7 +1,9 @@
 package com.msioja.core.service;
 
 import com.msioja.core.model.Book;
+import com.msioja.core.model.User;
 import com.msioja.core.repository.BookRepository;
+import com.msioja.core.repository.UserRepository;
 import com.msioja.mapper.BookMapper;
 import com.msioja.web.dto.BookDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,24 @@ public class BookServiceImpl implements BookService {
     private BookRepository bookRepository;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private BookMapper bookMapper;
+
+    @Autowired
+    private PrincipalService principalService;
 
     @Override
     public List<BookDTO> findAll() {
         return bookMapper.toDtoList(bookRepository.findAll());
+    }
+
+    @Override
+    public List<BookDTO> findBooksForLoggedInUser() {
+        User user = userRepository.findByLogin(principalService.getCurrentlyLoggedInUserLogin());
+        List<Book> books = bookRepository.findBooksForUserById(user.getUserId());
+        return bookMapper.toDtoList(books);
     }
 
     @Override
@@ -30,6 +45,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookDTO addBook(Book book) {
+        User user = userRepository.findByLogin(principalService.getCurrentlyLoggedInUserLogin());
+        book.setUser(user);
         bookRepository.save(book);
         return bookMapper.toDto(book);
     }

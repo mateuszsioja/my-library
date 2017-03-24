@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class UserMapper implements GenericMapper<User, UserDTO> {
 
     @Autowired
-    BookRepository bookRepository;
+    private BookRepository bookRepository;
 
     @Override
     public UserDTO toDto(User entity) {
@@ -23,8 +23,6 @@ public class UserMapper implements GenericMapper<User, UserDTO> {
         userDTO.setSurname(entity.getSurname());
         userDTO.setLogin(entity.getLogin());
         userDTO.setPassword(entity.getPassword());
-        //userDTO.setRoles(entity.getRoles().stream()
-        //        .map(Role::getRole).collect(Collectors.toList()));
         userDTO.setBookIds(entity.getBooks().stream()
                 .map(Book::getBookId).collect(Collectors.toList()));
         return userDTO;

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -34,7 +33,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<UserDTO> addUser(@Valid @RequestBody UserDTO userDTO) {
-        return new ResponseEntity<>(userService.addBook(userMapper.toEntity(userDTO)), HttpStatus.CREATED);
+        return new ResponseEntity<>(userService.addUser(userMapper.toEntity(userDTO)), HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)

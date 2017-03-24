@@ -1,0 +1,24 @@
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <a class="navbar-brand" routerLink="/books">My Library</a>
+      <ul class="nav navbar-nav navbar-left">
+        <li><a routerLink="/login">Logout</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<div class="container">
+  <br/><br/><br/><br/>
+  <ul class="nav nav-pills" role="tablist">
+    <li role="presentation"><a class="nav-link" [routerLink]="['/books']" routerLinkActive="active-link"
+                               [routerLinkActiveOptions]="{exact:true}">All Books</a></li>
+    <li role="presentation"><a class="nav-link" [routerLink]="['add-book']" routerLinkActive="active-link"
+                               [routerLinkActiveOptions]="{exact:true}">Add New Book</a></li>
+  </ul>
+</div>
+<router-outlet></router-outlet>

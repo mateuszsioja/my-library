@@ -1,5 +1,6 @@
 package com.msioja.web.dto;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -7,7 +8,6 @@ import java.util.List;
 
 public class UserDTO {
 
-    @NotNull
     private Long userId;
 
     @NotNull
@@ -19,14 +19,13 @@ public class UserDTO {
     private String surname;
 
     @NotNull
+    @Column(unique = true)
     @Size(min = 2, max = 30)
     private String login;
 
     @NotNull
-    @Size(min = 2, max = 30)
+    @Size(min = 2)
     private String password;
-
-    //private List<String> roles = new ArrayList<>();
 
     private List<Long> bookIds = new ArrayList<>();
 
@@ -70,14 +69,6 @@ public class UserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    /*public List<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }*/
 
     public List<Long> getBookIds() {
         return bookIds;

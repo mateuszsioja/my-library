@@ -1,15 +1,26 @@
 package com.msioja.web.dto;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class BookDTO {
 
     private Long bookId;
 
+    @NotNull
+    @Size(min = 2, max = 25)
     private String serialNumber;
 
+    @NotNull
+    @Size(min = 2, max = 25)
     private String author;
 
+    @NotNull
+    @Size(min = 2, max = 25)
     private String title;
 
+    @NotNull
+    @Size(min = 2, max = 25)
     private String category;
 
     private Long userId;

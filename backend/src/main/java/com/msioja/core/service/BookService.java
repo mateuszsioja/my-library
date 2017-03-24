@@ -9,6 +9,8 @@ public interface BookService {
 
     List<BookDTO> findAll();
 
+    List<BookDTO> findBooksForLoggedInUser();
+
     BookDTO findById(Long id);
 
     BookDTO addBook(Book book);

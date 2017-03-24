@@ -8,7 +8,7 @@ CREATE TABLE person
   user_id   SERIAL NOT NULL,
   name      TEXT NOT NULL,
   surname   TEXT NOT NULL,
-  login     TEXT NOT NULL,
+  login     TEXT NOT NULL UNIQUE,
   password  TEXT NOT NULL,
   PRIMARY KEY (user_id)
 );

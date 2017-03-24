@@ -14,19 +14,20 @@ public class User {
     private Long userId;
 
     @NotNull
-    @Size(min = 2, max = 30)
+    @Size(min = 2, max = 25)
     private String name;
 
     @NotNull
-    @Size(min = 2, max = 30)
+    @Size(min = 2, max = 25)
     private String surname;
 
     @NotNull
-    @Size(min = 2, max = 30)
+    @Size(min = 2, max = 25)
+    @Column(unique = true)
     private String login;
 
     @NotNull
-    @Size(min = 2, max = 30)
+    @Size(min = 2)
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
